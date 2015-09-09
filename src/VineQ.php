@@ -85,7 +85,7 @@ class VineQ {
    * @param int $page
    * @return mixed
    */
-  public function getTags($id = '', $size = 10, $page = 1)
+  public function searchTags($id = '', $size = 10, $page = 1)
   {
 	return $this->_makeCall('timelines/tags/' . $id, array('size' => $size, 'page' => $page));
   }
@@ -98,7 +98,7 @@ class VineQ {
    * @param int $page
    * @return mixed
    */
-  public function getTags($id = '', $size = 10, $page = 1)
+  public function searchPosts($id = '', $size = 10, $page = 1)
   {
 	return $this->_makeCall('timelines/posts/' . $id, array('size' => $size, 'page' => $page));
   }
