@@ -63,7 +63,7 @@ class VineQServiceProvider extends ServiceProvider
             return $manager->createConnection();
         });
 
-        $app->alias('vineq', VineQManager::class);
+        $app->alias('vineq', VineQ::class);
     }
 
     /**
