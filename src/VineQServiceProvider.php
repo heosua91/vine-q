@@ -30,7 +30,6 @@ class VineQServiceProvider extends ServiceProvider
     {
         $this->registerFactory($this->app);
         $this->registerManager($this->app);
-        $this->registerBindings($this->app);
     }
 
     /**
@@ -60,29 +59,11 @@ class VineQServiceProvider extends ServiceProvider
     {
         $app->singleton('vineq', function ($app) {
             $factory = $app['vineq.factory'];
-
-            return new VineQManager($factory);
-        });
-
-        $app->alias('vineq', VineQManager::class);
-    }
-
-    /**
-     * Register the bindings.
-     *
-     * @param \Illuminate\Contracts\Foundation\Application $app
-     *
-     * @return void
-     */
-    protected function registerBindings(Application $app)
-    {
-        $app->bind('vineq.connection', function ($app) {
-            $manager = $app['vineq'];
-
+			$manager = new VineQManager($factory);
             return $manager->createConnection();
         });
 
-        $app->alias('vineq.connection', VineQ::class);
+        $app->alias('vineq', VineQManager::class);
     }
 
     /**
@@ -95,7 +76,6 @@ class VineQServiceProvider extends ServiceProvider
         return [
             'vineq',
             'vineq.factory',
-            'vineq.connection',
         ];
     }
 }
