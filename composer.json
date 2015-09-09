@@ -22,12 +22,12 @@
     },
 	"autoload": {
         "psr-4": {
-            "QLib\\GoogleQ\\": "src/"
+            "QLib\\VineQ\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "QLib\\Tests\\GoogleQ\\": "tests/"
+            "QLib\\Tests\\VineQ\\": "tests/"
         }
     }
 }
