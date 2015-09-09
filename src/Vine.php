@@ -29,18 +29,6 @@ class Vine {
   }
 
   /**
-   * Get recent media from a given location
-   *
-   * @param float $lat                    Latitude of the center search coordinate
-   * @param float $lng                    Longitude of the center search coordinate
-   * @param integer [optional] $distance  Distance in meter (max. distance: 5km = 5000)
-   * @return mixed
-   */
-  public function searchLocation($lat, $lng, $distance = 1000) {
-    return $this->_makeCall('locations/search', false, array('lat' => $lat, 'lng' => $lng, 'distance' => $distance));
-  }
-
-  /**
    * Get popular timelines
    *
    * @param int $size
@@ -80,14 +68,14 @@ class Vine {
   /**
    * Get tag
    *
-   * @param string $id
+   * @param string $tag
    * @param int $size
    * @param int $page
    * @return mixed
    */
-  public function searchTags($id = '', $size = 10, $page = 1)
+  public function searchTags($tag = '', $size = 10, $page = 1)
   {
-	return $this->_makeCall('timelines/tags/' . $id, array('size' => $size, 'page' => $page));
+	return $this->_makeCall('timelines/tags/' . $tag, array('size' => $size, 'page' => $page));
   }
   
   /**
@@ -113,13 +101,13 @@ class Vine {
    */
   protected function _makeCall($function, $params = null, $method = 'GET') {
     if (isset($params) && is_array($params)) {
-      $paramString = '&' . http_build_query($params);
+      $paramString = '?' . http_build_query($params);
     } else {
       $paramString = null;
     }
-
+	
     $apiCall = self::API_URL . $function . (('GET' === $method) ? $paramString : null);
-
+	
     // signed header of POST/DELETE requests
     $headerData = array('Accept: application/json');
 
