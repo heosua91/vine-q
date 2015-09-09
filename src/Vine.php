@@ -12,7 +12,7 @@ namespace QLib\VineQ;
  * @since 09/08/2015
  * @copyright Bui Xuan Quy - Q' Company 2015
  */
-class VineQ {
+class Vine {
 
   /**
    * The API base URL

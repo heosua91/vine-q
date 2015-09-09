@@ -11,7 +11,7 @@
 
 namespace QLib\VineQ;
 
-use QLib\VineQ\VineQ;
+use QLib\VineQ\Vine;
 
 /**
  * This is the Vine factory class.
@@ -29,6 +29,6 @@ class VineQFactory
      */
     public function make()
     {
-        return new VineQ;
+        return new Vine();
     }
 }
