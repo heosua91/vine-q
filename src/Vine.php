@@ -131,6 +131,6 @@ class Vine {
     }
     curl_close($ch);
 
-    return json_decode($jsonData);
+    return json_decode($jsonData, false, 512, JSON_BIGINT_AS_STRING);
   }
 }
