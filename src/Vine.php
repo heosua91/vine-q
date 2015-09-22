@@ -71,11 +71,17 @@ class Vine {
    * @param string $tag
    * @param int $size
    * @param int $page
+   * @param string $anchor
    * @return mixed
    */
-  public function searchTags($tag = '', $size = 10, $page = 1)
+  public function searchTags($tag = '', $size = 10, $page = 1, $anchor = '')
   {
-	return $this->_makeCall('timelines/tags/' . $tag, array('size' => $size, 'page' => $page));
+	if (empty($anchor)) {
+		return $this->_makeCall('timelines/tags/' . $tag, array('size' => $size, 'page' => $page));
+	}
+	else {
+		return $this->_makeCall('timelines/tags/' . $tag, array('size' => $size, 'page' => $page, 'anchor' => $anchor));
+	}
   }
   
   /**
